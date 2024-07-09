@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProductMaster>
+
+@* <div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Tables</li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title --> *@
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Product Overview</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Product Number</th>
+                                <th>Product Description</th>
+                                <th>Category</th>
+                                <th>Data Source</th>
+                                <th>IsActive</th>
+                                <th>Created By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>@product.Number</td>
+                                    <td>@product.Description</td>
+                                    <td>@product.Category</td>
+                                    <td>@product.DataSource</td>
+                                    <td>@product.IsActive</td>
+                                    <td>@product.CreatedBy</td>
+                                    <td>
+                                        <button style="border: none">
+                                            <a asp-action="Details" asp-route-productId="@product.ProductId">Details</a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Product Master DataOverview -->

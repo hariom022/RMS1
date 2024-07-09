@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Invoice>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Invoice Overview</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Invoice No</th>
+                                <th>OBD No</th>
+                                <th>Quotation No</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var invoice in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>@invoice.InvoiceNo</td>
+                                    <td>@invoice.OBDNo</td>
+                                    <td>@invoice.QuotationNo</td>
+                                    <td>
+                                        @switch (invoice.Status)
+                                        {
+                                            case SD.StatusPending:
+                                                <span class="badge bg-warning">@invoice.Status</span>
+                                                break;
+                                            case SD.StatusCancelled:
+                                                <span class="badge bg-danger">@invoice.Status</span>
+                                                break;
+                                            case SD.StatusApproved:
+                                                <span class="badge bg-success">@invoice.Status</span>
+                                                break;
+                                            case SD.StatusInProcess:
+                                                <span class="badge bg-primary">@invoice.Status</span>
+                                                break;
+                                            default:
+                                                @invoice.Status
+                                                break;
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <button style="border: none">
+                                            <a asp-action="InvoiceDetails" asp-route-invoiceNo="@invoice.InvoiceNo">Details</a>
+                                        </button>
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<StoreMaster>
+<div class="col-12">
+    <div class="card good-Receipt overflow-auto">
+        <div class="card-body">
+            <h5 class="card-title">Consumption Entry Form</h5>
+
+            <!-- ---------------------------------------- -->
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="plant" class="form-label">Plant</label>
+                        <select class="form-select" id="plant" required>
+                            <option selected disabled>Select Plant</option>
+                            @foreach (var plant in Model)
+                            {
+                                <option value="@plant.StoreId">@plant.StoreName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="material" class="form-label">Material</label>
+                        <select class="form-select" id="material" required>
+                            <option selected disabled>Select Material</option>
+                            <option value="material1">Material 1</option>
+                            <option value="material2">Material 2</option>
+                            <option value="material3">Material 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="materialDescription" class="form-label">Material Description</label>
+                        <select class="form-select" id="materialDescription" required>
+                            <option selected disabled>Select Material Description</option>
+                            <option value="materialDescription1">Material Description 1</option>
+                            <option value="materialDescription2">Material Description 2</option>
+                            <option value="materialDescription3">Material Description 3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="uom" class="form-label">UOM</label>
+                        <select class="form-select" id="uom" required>
+                            <option selected disabled>Select UOM</option>
+                            <option value="pieces">Pieces</option>
+                            <option value="units">Units</option>
+                            <option value="kilograms">Kilograms</option>
+                            <option value="liters">Liters</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="productType" class="form-label">Product Type</label>
+                        <select class="form-select" id="productType">
+                            <option selected disabled>Select Product Type</option>
+                            <option value="pieces">Product Type 1</option>
+                            <option value="units">Product Type 2</option>
+                            <option value="kilograms">Product Type 3</option>
+                            <option value="liters">Product Type 4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="materialDocument" class="form-label">Material Document</label>
+                        <select class="form-select" id="materialDocument">
+                            <option selected disabled>Select Material Document</option>
+                            <option value="pieces">Material Document 1</option>
+                            <option value="units">Material Document 2</option>
+                            <option value="kilograms">Material Document 3</option>
+                            <option value="liters">Material Document 4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="dateOfQuantityConsumed" class="form-label">Date of Quantity Consumed</label>
+                        <input type="date"
+                               class="form-control"
+                               id="dateOfQuantityConsumed"
+                               required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="quantityConsumed" class="form-label">Quantity Consumed</label>
+                        <input type="number"
+                               class="form-control"
+                               id="quantityConsumed"
+                               placeholder="Enter Quantity Consumed"
+                               required />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="unrestrictedStock" class="form-label">Unrestricted Stock</label>
+                        <input type="number"
+                               class="form-control"
+                               id="unrestrictedStock"
+                               placeholder="Enter Unrestricted Stock"
+                               required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" asp-action="create">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

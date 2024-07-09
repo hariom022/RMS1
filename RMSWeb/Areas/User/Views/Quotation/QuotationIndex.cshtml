@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Quotation>
+
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quotation Overview</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Order Request No</th>
+                                <th>Quotation No</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var quotation in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>@quotation.RequestNo</td>
+                                    <td>@quotation.QuotationNo</td>
+                                    <td>
+                                        @switch (quotation.Status)
+                                        {
+                                            case "Pending":
+                                                <span class="badge bg-secondary">@quotation.Status</span>
+                                                break;
+                                            case "Cancelled":
+                                                <span class="badge bg-danger">@quotation.Status</span>
+                                                break;
+                                            case "Approved":
+                                                <span class="badge bg-success">@quotation.Status</span>
+                                                break;
+                                            default:
+                                                @quotation.Status
+                                                break;
+                                        }
+                                    </td>
+                                    @if (quotation.Status == @SD.StatusPending)
+                                    {
+                                        <td>
+
+                                            <form method="post" asp-action="QuotationIndexPost" asp-controller="Quotation" class="d-inline">
+                                                <input type="hidden" name="id" value="@quotation.Id" />
+                                                <input type="hidden" name="status" value="@SD.StatusInProcess" />
+                                                <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                            </form>
+                                            <form method="post" asp-action="QuotationIndexPost" asp-controller="Quotation" class="d-inline">
+                                                <input type="hidden" name="id" value="@quotation.Id" />
+                                                <input type="hidden" name="status" value="@SD.StatusCancelled" />
+                                                <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                            </form>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

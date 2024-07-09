@@ -1,0 +1,49 @@
+﻿@model PurchaseOrderCart
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Product.Description</h5>
+
+        <!-- Vertical Form -->
+        <form class="row g-3" method="post">
+            <input hidden asp-for="ProductId" />
+            <div class="col-6">
+                <label for="Product Number" class="form-label">Product Number</label>
+                <input disabled type="text" class="form-control" id="Product Number" placeholder="@Model.Product.Number">
+            </div>
+            <div class="col-6">
+                <label for="Description" class="form-label">Description</label>
+                <input disabled type="text" class="form-control" id="Description" placeholder="@Model.Product.Description">
+            </div>
+            <div class="col-6">
+                <label for="Category" class="form-label">Category</label>
+                <input disabled type="text" class="form-control" id="Category" placeholder="@Model.Product.Category">
+            </div>
+            <div class="col-6">
+                <label for="DataSource" class="form-label">Data Source</label>
+                <input disabled type="text" class="form-control" id="DataSource" placeholder="@Model.Product.DataSource">
+            </div>
+            <div class="col-6">
+                <label for="IsActive" class="form-label">IsActive</label>
+                <input disabled type="text" class="form-control" id="IsActive" placeholder="@Model.Product.IsActive">
+            </div>
+            <div class="col-6">
+                <label for="CreatedBy" class="form-label">Created By</label>
+                <input disabled type="text" class="form-control" id="CreatedBy" placeholder="@Model.Product.CreatedBy">
+            </div>
+            <div class="col-6">
+                <label for="CreatedOn" class="form-label">Created On</label>
+                <input disabled type="text" class="form-control" id="CreatedOn" placeholder="@Model.Product.CreatedOn">
+            </div>
+            <div class="col-6">
+                <label for="quantity" class="form-label">Count</label>
+                <input asp-for="Count" type="number" class="form-control" id="quantity" min="1" placeholder="Add quantity to place the order">
+            </div>
+            <div class="text-center " style="padding-top:10px;">
+                <button type="submit" class="btn btn-primary">ADD TO ORDER CART</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form><!-- Vertical Form -->
+
+    </div>
+</div>

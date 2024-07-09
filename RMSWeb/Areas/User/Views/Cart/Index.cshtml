@@ -1,0 +1,74 @@
+﻿@model RMS.Models.ViewModels.PurchaseOrderCartVM
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Order Cart</h5>
+
+        <form method="post" asp-action="AddToCart" asp-controller="Cart">
+            <div class="row d-flex justify-content-around">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @* <label for="productSelect">Select Product</label> *@
+                        <select asp-for="SelectedProductId" class="form-select" id="productSelect">
+                            <option value="">Select product</option>
+                            @foreach (var product in Model.Products)
+                            {
+                                <option value="@product.ProductId">@product.Description</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @* <label for="quantity">Count</label> *@
+                        <input asp-for="QuantityToAdd" class="form-control" id="quantity" type="number" min="1" placeholder="Add quantity to place the order">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary w-50" type="submit">ADD</button>
+                </div>
+            </div>
+        </form>
+        <hr class="mb-3 mt-5"/>
+        <!-- Table with hoverable rows -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PurchaseOrderCartList)
+                {
+                    <tr>
+                        <td>@item.Product.Description</td>
+                        <td>@item.Count</td>
+                        <td>
+                            <a asp-action="Plus" asp-route-cartId="@item.Id" class="btn btn-primary bg-gradient py-2">
+                                <i class="bi bi-plus-square"></i>
+                            </a>
+                            <a asp-action="Minus" asp-route-cartId="@item.Id" class="btn btn-primary bg-gradient py-2">
+                                <i class="bi bi-dash-square"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-action="Remove" asp-route-cartId="@item.Id" class="btn btn-danger bg-gradient py-2">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="d-grid gap-2 m-3 text-center">
+        <a asp-action="OrderSummary">
+            <button class="btn btn-primary" type="button">Order Summary</button>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StoreMaster>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Store Overview</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Store Name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Data Source</th>
+                                <th scope="col">Manager</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var plant in Model)
+                        {
+                            <tr>
+                                <td>@plant.StoreName</td>
+                                <td>@plant.Location</td>
+                                <td>@plant.DataSource</td>
+                                 <td>@plant.Manager</td>
+                                <td>
+                                    <button style="border: none">
+                                        <a href="#">Details</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

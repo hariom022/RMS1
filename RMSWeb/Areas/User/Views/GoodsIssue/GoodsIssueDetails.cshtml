@@ -1,0 +1,111 @@
+﻿@model IEnumerable<GoodsIssue>
+
+@{
+    var firstGoodsIssue = Model.FirstOrDefault();
+}
+
+<
+<div class="container">
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-secondary bg-gradient text-light ml-0 py-4">
+            <div class="row px-4">
+                <div class="col-6">
+                    <h5 class="pt-2 text-white">
+                        Goods Issue Summary
+                    </h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-action="GoodsIssueIndex" class="btn btn-outline-danger btn-sm">Back to Index</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container rounded p-2">
+                <div class="row">
+                    <div class="col-12 col-lg-6 pb-4">
+                        <div class="row">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-info">Goods Issue Details:</span>
+                            </h4>
+                        </div>
+
+                        <div class="row my-1">
+                            <div class="col-3">
+                                <label>Quotation No</label>
+                            </div>
+                            <div class="col-9">
+                                <input value="@firstGoodsIssue.QuotationNo" class="form-control" readonly />
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row my-1">
+                            <div class="col-3">
+                                <label>OBD No</label>
+                            </div>
+                            <div class="col-9">
+                                <input value="@firstGoodsIssue.OBDNo" class="form-control" readonly />
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row my-1">
+                            <div class="col-3">
+                                <label>Delivered Date</label>
+                            </div>
+                            <div class="col-9">
+                                <input value="@firstGoodsIssue.DeliveredDate" class="form-control" readonly />
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-lg-5 offset-lg-1">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-info">Product Summary:</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+
+                            @foreach (var details in Model)
+                            {
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="my-0">@details.ProductNumber</h6>
+                                        @* <small class="text-muted">Number: @details.Quantity</small> *@
+                                    </div>
+                                    <span class="text-muted">Quantity: @details.Quantity </span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <div class="row justify-content-center">
+                @* <div class="col-12 col-md-3">
+                <button type="button" class="btn btn-primary form-control" onclick="setGoodsIssueStatus('@firstGoodsIssue?.OBDNo', '@SD.StatusInProcess')">Approve</button>
+                </div>
+                <div class="col-12 col-md-3">
+                <button type="button" class="btn btn-danger form-control" onclick="setGoodsIssueStatus('@firstGoodsIssue?.OBDNo', '@SD.StatusCancelled')">Reject</button>
+                </div> *@
+
+                <form method="post" asp-action="GoodsIssuePost" asp-controller="GoodsIssue" class="d-inline">
+                    <input type="hidden" name="obdNo" value="@firstGoodsIssue?.OBDNo" />
+                    <input type="hidden" name="status" value="@SD.StatusInProcess" />
+                    <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                </form>
+                <form method="post" asp-action="GoodsIssuePost" asp-controller="GoodsIssue" class="d-inline">
+                    <input type="hidden" name="obdNo" value="@firstGoodsIssue?.OBDNo" />
+                    <input type="hidden" name="status" value="@SD.StatusCancelled" />
+                    <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
