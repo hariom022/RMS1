@@ -14,7 +14,7 @@ namespace RMS.Models
         public int ProductStockId { get; set; }
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public Product ProductMaster { get; set; }
+        public Product Product { get; set; }
         [Required]
         public int MinStock { get; set; }
         [Required]

@@ -12,7 +12,7 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240710053210_addInitial")]
+    [Migration("20240710070314_addInitial")]
     partial class addInitial
     {
         /// <inheritdoc />
@@ -287,7 +287,7 @@ namespace RMS.DataAccess.Migrations
 
                     b.HasIndex("StoreId");
 
-                    b.ToTable("Consumption");
+                    b.ToTable("ConsumptionEntries");
                 });
 
             modelBuilder.Entity("RMS.Models.GoodsIssue", b =>
@@ -480,7 +480,7 @@ namespace RMS.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductStock");
+                    b.ToTable("ProductStocks");
                 });
 
             modelBuilder.Entity("RMS.Models.PurchaseOrderCart", b =>
@@ -699,7 +699,7 @@ namespace RMS.DataAccess.Migrations
 
                     b.HasIndex("StoreId");
 
-                    b.ToTable("StoreStock");
+                    b.ToTable("StoreStocks");
                 });
 
             modelBuilder.Entity("RMS.Models.ApplicationUser", b =>
@@ -808,13 +808,13 @@ namespace RMS.DataAccess.Migrations
 
             modelBuilder.Entity("RMS.Models.ProductStock", b =>
                 {
-                    b.HasOne("RMS.Models.Product", "ProductMaster")
+                    b.HasOne("RMS.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductMaster");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("RMS.Models.PurchaseOrderCart", b =>

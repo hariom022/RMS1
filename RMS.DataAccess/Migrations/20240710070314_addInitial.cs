@@ -93,7 +93,7 @@ namespace RMS.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductStock",
+                name: "ProductStocks",
                 columns: table => new
                 {
                     ProductStockId = table.Column<int>(type: "int", nullable: false)
@@ -113,9 +113,9 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductStock", x => x.ProductStockId);
+                    table.PrimaryKey("PK_ProductStocks", x => x.ProductStockId);
                     table.ForeignKey(
-                        name: "FK_ProductStock_Products_ProductId",
+                        name: "FK_ProductStocks_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
@@ -155,7 +155,7 @@ namespace RMS.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Consumption",
+                name: "ConsumptionEntries",
                 columns: table => new
                 {
                     ConsumptionId = table.Column<int>(type: "int", nullable: false)
@@ -176,15 +176,15 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Consumption", x => x.ConsumptionId);
+                    table.PrimaryKey("PK_ConsumptionEntries", x => x.ConsumptionId);
                     table.ForeignKey(
-                        name: "FK_Consumption_Products_ProductId",
+                        name: "FK_ConsumptionEntries_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Consumption_Stores_StoreId",
+                        name: "FK_ConsumptionEntries_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
                         principalColumn: "StoreId",
@@ -192,7 +192,7 @@ namespace RMS.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StoreStock",
+                name: "StoreStocks",
                 columns: table => new
                 {
                     StoreId = table.Column<int>(type: "int", nullable: false),
@@ -209,15 +209,15 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StoreStock", x => new { x.ProductId, x.StoreId });
+                    table.PrimaryKey("PK_StoreStocks", x => new { x.ProductId, x.StoreId });
                     table.ForeignKey(
-                        name: "FK_StoreStock_Products_ProductId",
+                        name: "FK_StoreStocks_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StoreStock_Stores_StoreId",
+                        name: "FK_StoreStocks_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
                         principalColumn: "StoreId",
@@ -511,13 +511,13 @@ namespace RMS.DataAccess.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Consumption_ProductId",
-                table: "Consumption",
+                name: "IX_ConsumptionEntries_ProductId",
+                table: "ConsumptionEntries",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Consumption_StoreId",
-                table: "Consumption",
+                name: "IX_ConsumptionEntries_StoreId",
+                table: "ConsumptionEntries",
                 column: "StoreId");
 
             migrationBuilder.CreateIndex(
@@ -531,8 +531,8 @@ namespace RMS.DataAccess.Migrations
                 column: "GoodsIssueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductStock_ProductId",
-                table: "ProductStock",
+                name: "IX_ProductStocks_ProductId",
+                table: "ProductStocks",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -566,8 +566,8 @@ namespace RMS.DataAccess.Migrations
                 column: "PurchaseOrderHeaderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StoreStock_StoreId",
-                table: "StoreStock",
+                name: "IX_StoreStocks_StoreId",
+                table: "StoreStocks",
                 column: "StoreId");
         }
 
@@ -590,13 +590,13 @@ namespace RMS.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Consumption");
+                name: "ConsumptionEntries");
 
             migrationBuilder.DropTable(
                 name: "Invoices");
 
             migrationBuilder.DropTable(
-                name: "ProductStock");
+                name: "ProductStocks");
 
             migrationBuilder.DropTable(
                 name: "PurchaseOrderCarts");
@@ -608,7 +608,7 @@ namespace RMS.DataAccess.Migrations
                 name: "Quotations");
 
             migrationBuilder.DropTable(
-                name: "StoreStock");
+                name: "StoreStocks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

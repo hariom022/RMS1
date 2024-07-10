@@ -21,9 +21,9 @@ namespace RMS.DataAccess.Data
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Store> Stores { get; set; }
-        public DbSet<ConsumptionEntry> Consumption { get; set; }
-        public DbSet<StoreStock> StoreStock {  get; set; }
-        public DbSet<ProductStock> ProductStock { get; set; }
+        public DbSet<ConsumptionEntry> ConsumptionEntries { get; set; }
+        public DbSet<StoreStock> StoreStocks {  get; set; }
+       public DbSet<ProductStock> ProductStocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
