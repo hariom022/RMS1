@@ -4,16 +4,16 @@ using RMS.Models;
 
 namespace RMS.DataAccess.Repository
 {
-    public class StoreMasterRepository : Repository<StoreMaster>, IStoreMasterRepository
+    public class StoreRepository : Repository<Store>, IStoreRepository
     {
         private readonly ApplicationDbContext _db;
-        public StoreMasterRepository(ApplicationDbContext db) : base(db)
+        public StoreRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
-        public void Update(StoreMaster obj)
+        public void Update(Store obj)
         {
-            _db.StoresMaster.Update(obj);
+            _db.Stores.Update(obj);
         }
     }
 }

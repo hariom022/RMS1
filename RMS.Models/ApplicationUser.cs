@@ -9,7 +9,7 @@ namespace RMS.Models
         public int? StoreId { get; set; }
         [ForeignKey("StoreId")]
         [ValidateNever]
-        public StoreMaster Store { get; set; }
+        public Store Store { get; set; }
 
     }
 }

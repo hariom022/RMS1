@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace RMS.Models
 {
-    public class ProductStockMaster
+    public class ProductStock
     {
         [Key]
         public int ProductStockId { get; set; }
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public ProductMaster ProductMaster { get; set; }
+        public Product ProductMaster { get; set; }
         [Required]
         public int MinStock { get; set; }
         [Required]

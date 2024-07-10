@@ -4,10 +4,10 @@ using RMS.Models;
 
 namespace RMS.DataAccess.Repository
 {
-    public class ProductMasterRepository : Repository<ProductMaster>, IProductMasterRepository
+    public class ProductRepository : Repository<Product>, IProductRepository
     {
         private readonly ApplicationDbContext _db;
-        public ProductMasterRepository(ApplicationDbContext db) : base(db)
+        public ProductRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
@@ -17,9 +17,9 @@ namespace RMS.DataAccess.Repository
             _db.SaveChanges();
         }
 
-        public void Update(ProductMaster obj)
+        public void Update(Product obj)
         {
-            _db.ProductsMaster.Update(obj);
+            _db.Products.Update(obj);
         }
     }
 }

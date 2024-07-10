@@ -26,7 +26,7 @@ namespace RMS.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductsMaster",
+                name: "Products",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false)
@@ -45,11 +45,11 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductsMaster", x => x.ProductId);
+                    table.PrimaryKey("PK_Products", x => x.ProductId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StoresMaster",
+                name: "Stores",
                 columns: table => new
                 {
                     StoreId = table.Column<int>(type: "int", nullable: false)
@@ -68,7 +68,7 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StoresMaster", x => x.StoreId);
+                    table.PrimaryKey("PK_Stores", x => x.StoreId);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,7 +93,7 @@ namespace RMS.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductStockMaster",
+                name: "ProductStock",
                 columns: table => new
                 {
                     ProductStockId = table.Column<int>(type: "int", nullable: false)
@@ -113,11 +113,11 @@ namespace RMS.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductStockMaster", x => x.ProductStockId);
+                    table.PrimaryKey("PK_ProductStock", x => x.ProductStockId);
                     table.ForeignKey(
-                        name: "FK_ProductStockMaster_ProductsMaster_ProductId",
+                        name: "FK_ProductStock_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "ProductsMaster",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -148,9 +148,9 @@ namespace RMS.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_StoresMaster_StoreId",
+                        name: "FK_AspNetUsers_Stores_StoreId",
                         column: x => x.StoreId,
-                        principalTable: "StoresMaster",
+                        principalTable: "Stores",
                         principalColumn: "StoreId");
                 });
 
@@ -178,15 +178,15 @@ namespace RMS.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Consumption", x => x.ConsumptionId);
                     table.ForeignKey(
-                        name: "FK_Consumption_ProductsMaster_ProductId",
+                        name: "FK_Consumption_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "ProductsMaster",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Consumption_StoresMaster_StoreId",
+                        name: "FK_Consumption_Stores_StoreId",
                         column: x => x.StoreId,
-                        principalTable: "StoresMaster",
+                        principalTable: "Stores",
                         principalColumn: "StoreId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -211,15 +211,15 @@ namespace RMS.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_StoreStock", x => new { x.ProductId, x.StoreId });
                     table.ForeignKey(
-                        name: "FK_StoreStock_ProductsMaster_ProductId",
+                        name: "FK_StoreStock_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "ProductsMaster",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StoreStock_StoresMaster_StoreId",
+                        name: "FK_StoreStock_Stores_StoreId",
                         column: x => x.StoreId,
-                        principalTable: "StoresMaster",
+                        principalTable: "Stores",
                         principalColumn: "StoreId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -329,9 +329,9 @@ namespace RMS.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PurchaseOrderCarts_ProductsMaster_ProductId",
+                        name: "FK_PurchaseOrderCarts_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "ProductsMaster",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -403,9 +403,9 @@ namespace RMS.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_PurchaseOrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PurchaseOrderItems_ProductsMaster_ProductId",
+                        name: "FK_PurchaseOrderItems_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "ProductsMaster",
+                        principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -531,8 +531,8 @@ namespace RMS.DataAccess.Migrations
                 column: "GoodsIssueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductStockMaster_ProductId",
-                table: "ProductStockMaster",
+                name: "IX_ProductStock_ProductId",
+                table: "ProductStock",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -596,7 +596,7 @@ namespace RMS.DataAccess.Migrations
                 name: "Invoices");
 
             migrationBuilder.DropTable(
-                name: "ProductStockMaster");
+                name: "ProductStock");
 
             migrationBuilder.DropTable(
                 name: "PurchaseOrderCarts");
@@ -617,7 +617,7 @@ namespace RMS.DataAccess.Migrations
                 name: "GoodsIssues");
 
             migrationBuilder.DropTable(
-                name: "ProductsMaster");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "PurchaseOrderHeaders");
@@ -626,7 +626,7 @@ namespace RMS.DataAccess.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "StoresMaster");
+                name: "Stores");
         }
     }
 }

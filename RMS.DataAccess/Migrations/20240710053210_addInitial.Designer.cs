@@ -12,7 +12,7 @@ using RMS.DataAccess.Data;
 namespace RMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240709201118_addInitial")]
+    [Migration("20240710053210_addInitial")]
     partial class addInitial
     {
         /// <inheritdoc />
@@ -383,7 +383,7 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("RMS.Models.ProductMaster", b =>
+            modelBuilder.Entity("RMS.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -429,10 +429,10 @@ namespace RMS.DataAccess.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("ProductsMaster");
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("RMS.Models.ProductStockMaster", b =>
+            modelBuilder.Entity("RMS.Models.ProductStock", b =>
                 {
                     b.Property<int>("ProductStockId")
                         .ValueGeneratedOnAdd()
@@ -480,7 +480,7 @@ namespace RMS.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductStockMaster");
+                    b.ToTable("ProductStock");
                 });
 
             modelBuilder.Entity("RMS.Models.PurchaseOrderCart", b =>
@@ -611,7 +611,7 @@ namespace RMS.DataAccess.Migrations
                     b.ToTable("Quotations");
                 });
 
-            modelBuilder.Entity("RMS.Models.StoreMaster", b =>
+            modelBuilder.Entity("RMS.Models.Store", b =>
                 {
                     b.Property<int>("StoreId")
                         .ValueGeneratedOnAdd()
@@ -657,7 +657,7 @@ namespace RMS.DataAccess.Migrations
 
                     b.HasKey("StoreId");
 
-                    b.ToTable("StoresMaster");
+                    b.ToTable("Stores");
                 });
 
             modelBuilder.Entity("RMS.Models.StoreStock", b =>
@@ -767,13 +767,13 @@ namespace RMS.DataAccess.Migrations
 
             modelBuilder.Entity("RMS.Models.ConsumptionEntry", b =>
                 {
-                    b.HasOne("RMS.Models.ProductMaster", "Product")
+                    b.HasOne("RMS.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RMS.Models.StoreMaster", "Store")
+                    b.HasOne("RMS.Models.Store", "Store")
                         .WithMany()
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -806,9 +806,9 @@ namespace RMS.DataAccess.Migrations
                     b.Navigation("GoodsIssue");
                 });
 
-            modelBuilder.Entity("RMS.Models.ProductStockMaster", b =>
+            modelBuilder.Entity("RMS.Models.ProductStock", b =>
                 {
-                    b.HasOne("RMS.Models.ProductMaster", "ProductMaster")
+                    b.HasOne("RMS.Models.Product", "ProductMaster")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -825,7 +825,7 @@ namespace RMS.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RMS.Models.ProductMaster", "Product")
+                    b.HasOne("RMS.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -855,7 +855,7 @@ namespace RMS.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RMS.Models.ProductMaster", "Product")
+                    b.HasOne("RMS.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -879,33 +879,33 @@ namespace RMS.DataAccess.Migrations
 
             modelBuilder.Entity("RMS.Models.StoreStock", b =>
                 {
-                    b.HasOne("RMS.Models.ProductMaster", "ProductMaster")
+                    b.HasOne("RMS.Models.Product", "Product")
                         .WithMany("StoreStocks")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RMS.Models.StoreMaster", "StoreMaster")
+                    b.HasOne("RMS.Models.Store", "Store")
                         .WithMany("StoreStocks")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductMaster");
+                    b.Navigation("Product");
 
-                    b.Navigation("StoreMaster");
+                    b.Navigation("Store");
                 });
 
             modelBuilder.Entity("RMS.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("RMS.Models.StoreMaster", "Store")
+                    b.HasOne("RMS.Models.Store", "Store")
                         .WithMany()
                         .HasForeignKey("StoreId");
 
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("RMS.Models.ProductMaster", b =>
+            modelBuilder.Entity("RMS.Models.Product", b =>
                 {
                     b.Navigation("StoreStocks");
                 });
@@ -915,7 +915,7 @@ namespace RMS.DataAccess.Migrations
                     b.Navigation("PurchaseOrderItems");
                 });
 
-            modelBuilder.Entity("RMS.Models.StoreMaster", b =>
+            modelBuilder.Entity("RMS.Models.Store", b =>
                 {
                     b.Navigation("StoreStocks");
                 });

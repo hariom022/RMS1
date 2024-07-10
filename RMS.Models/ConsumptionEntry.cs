@@ -13,11 +13,11 @@ namespace RMS.Models
         public int UserId { get; set; }
         public int StoreId { get; set; }
         [ForeignKey("StoreId")]
-        public StoreMaster Store { get; set; }
+        public Store Store { get; set; }
 
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public ProductMaster Product { get; set; }
+        public Product Product { get; set; }
         [Required]
         public int Quantity { get; set; }
         [Required]

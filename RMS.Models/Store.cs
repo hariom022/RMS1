@@ -2,7 +2,7 @@
 
 namespace RMS.Models
 {
-    public class StoreMaster
+    public class Store
     {
         [Key]
         public int StoreId { get; set; }

@@ -31,10 +31,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IProductMasterRepository, ProductMasterRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IQuotationRepository, QuotationRepository>();
 builder.Services.AddScoped<IPurchaseOrderCartRepository, PurchaseOrderCartRepository>();
-builder.Services.AddScoped<IStoreMasterRepository, StoreMasterRepository>();
+builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 

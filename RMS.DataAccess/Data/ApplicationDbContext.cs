@@ -19,29 +19,16 @@ namespace RMS.DataAccess.Data
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<GoodsIssue> GoodsIssues { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
-        public DbSet<ProductMaster> ProductsMaster { get; set; }
-        public DbSet<StoreMaster> StoresMaster { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Store> Stores { get; set; }
         public DbSet<ConsumptionEntry> Consumption { get; set; }
         public DbSet<StoreStock> StoreStock {  get; set; }
-        public DbSet<ProductStockMaster> ProductStockMaster { get; set; }
+        public DbSet<ProductStock> ProductStock { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Define the sequence
-            //modelBuilder.HasSequence<int>("RequestNumber")
-            //    .StartsAt(1000000001)
-            //    .IncrementsBy(1);
-
-            //// Configure the entity to use the sequence for the RequestNo property
-            //modelBuilder.Entity<PurchaseOrderHeader>()
-            //    .Property(p => p.RequestNo)
-            //    .HasDefaultValueSql("NEXT VALUE FOR RequestNumber");
-
-
+            
             base.OnModelCreating(modelBuilder);
-
-
-
 
             // Composite primary key
             modelBuilder.Entity<StoreStock>()
@@ -49,12 +36,12 @@ namespace RMS.DataAccess.Data
 
             // Configure the relationships
             modelBuilder.Entity<StoreStock>()
-                .HasOne(d => d.ProductMaster)
+                .HasOne(d => d.Product)
                 .WithMany(p => p.StoreStocks)
                 .HasForeignKey(d => d.ProductId);
 
             modelBuilder.Entity<StoreStock>()
-                .HasOne(d => d.StoreMaster)
+                .HasOne(d => d.Store)
                 .WithMany(s => s.StoreStocks)
                 .HasForeignKey(d => d.StoreId);
 

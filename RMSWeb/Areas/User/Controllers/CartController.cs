@@ -18,13 +18,13 @@ namespace RMSWeb.Areas.User.Controllers
         private readonly IPurchaseOrderCartRepository _cartRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ISapService _sapService;
-        private readonly IProductMasterRepository _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly ApplicationDbContext applicationDb;
 
         [BindProperty]
         public PurchaseOrderCartVM PurchaseOrderCartVM { get; set; }
 
-        public CartController(IUnitOfWork unitOfWork, IPurchaseOrderCartRepository cartRepository, ISapService sapService, IProductMasterRepository productRepository , ApplicationDbContext applicationDb)
+        public CartController(IUnitOfWork unitOfWork, IPurchaseOrderCartRepository cartRepository, ISapService sapService, IProductRepository productRepository , ApplicationDbContext applicationDb)
         {
             _unitOfWork = unitOfWork;
             _cartRepository = cartRepository;
@@ -39,7 +39,7 @@ namespace RMSWeb.Areas.User.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            List<ProductMaster> product = _productRepository.GetAll().ToList();
+            List<Product> product = _productRepository.GetAll().ToList();
             PurchaseOrderCartVM = new()
             {
                 PurchaseOrderCartList = _cartRepository.GetAll(u => u.ApplicationUserId == userId, includeProperties: "Product"),

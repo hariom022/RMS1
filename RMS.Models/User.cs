@@ -7,7 +7,7 @@
         public string? Email { get; set; }
         public string? Password { get; set; }
         public int PlantID { get; set; } // Reference to the associated plant
-        public StoreMaster? Plant { get; set; } // Navigation property
+        public Store? Plant { get; set; } // Navigation property
     }
 
 }

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace RMS.DataAccess.Repository
 {
-    public class ProductStockMasterRepository : Repository<ProductStockMaster>, IProductStockMasterRepository
+    public class ProductStockRepository : Repository<ProductStock>, IProductStockRepository
     {
         private readonly ApplicationDbContext _db;
 
-        public ProductStockMasterRepository(ApplicationDbContext db) : base(db)
+        public ProductStockRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
@@ -22,9 +22,9 @@ namespace RMS.DataAccess.Repository
            _db.SaveChanges();
         }
 
-        public void Update(ProductStockMaster obj)
+        public void Update(ProductStock obj)
         {
-            _db.ProductStockMaster.Update(obj);                             
+            _db.ProductStock.Update(obj);                             
         }
     }
 }

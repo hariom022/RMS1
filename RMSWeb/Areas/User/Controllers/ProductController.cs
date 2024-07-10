@@ -7,12 +7,12 @@ using System.Security.Claims;
 namespace RMSWeb.Areas.User.Controllers
 {
     [Area("User")]
-    public class ProductMasterController : Controller
+    public class ProductController : Controller
     {
-        private readonly IProductMasterRepository _productRepo;
+        private readonly IProductRepository _productRepo;
         private readonly IPurchaseOrderCartRepository _cartRepo;
-        private readonly ILogger<ProductMasterController> _logger;
-        public ProductMasterController(IProductMasterRepository productRepo, IPurchaseOrderCartRepository cartRepo, ILogger<ProductMasterController> logger)
+        private readonly ILogger<ProductController> _logger;
+        public ProductController(IProductRepository productRepo, IPurchaseOrderCartRepository cartRepo, ILogger<ProductController> logger)
         {
             _productRepo = productRepo;
             _cartRepo = cartRepo;
@@ -23,7 +23,7 @@ namespace RMSWeb.Areas.User.Controllers
         {
             try
             {
-                List<ProductMaster> productList = _productRepo.GetAll().ToList();
+                List<Product> productList = _productRepo.GetAll().ToList();
                 return View(productList);
             }
             catch (Exception ex)

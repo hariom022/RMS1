@@ -6,7 +6,7 @@ namespace RMS.Models
     /// <summary>
     /// Details of products
     /// </summary>
-    public class ProductMaster
+    public class Product
     {
         [Key]
         public int ProductId { get; set; }

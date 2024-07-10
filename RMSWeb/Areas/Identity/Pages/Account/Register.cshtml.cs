@@ -28,7 +28,7 @@ namespace RMSWeb.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly IStoreMasterRepository _storeRepo;
+        private readonly IStoreRepository _storeRepo;
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
@@ -36,7 +36,7 @@ namespace RMSWeb.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IStoreMasterRepository storeRepo)
+            IStoreRepository storeRepo)
         {
             _roleManager = roleManager;
             _userManager = userManager;

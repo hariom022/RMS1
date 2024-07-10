@@ -17,10 +17,10 @@ namespace RMSWeb.Controllers
         public IActionResult Create()
         {
             // Action to display the consumption entry form
-            List<StoreMaster> plants = new()
+            List<Store> plants = new()
             {
-                 new StoreMaster { StoreId = 1, StoreName = "Store1", Location = "Location 1", Manager="Manager A", DataSource="Data Source A" , IsActive=true, CreatedBy="Create A" },
-                new StoreMaster { StoreId = 2, StoreName = "Store2", Location = "Location 2", Manager = "Manager B", DataSource = "Data Source B", IsActive = true, CreatedBy = "Create B" },
+                 new Store { StoreId = 1, StoreName = "Store1", Location = "Location 1", Manager="Manager A", DataSource="Data Source A" , IsActive=true, CreatedBy="Create A" },
+                new Store { StoreId = 2, StoreName = "Store2", Location = "Location 2", Manager = "Manager B", DataSource = "Data Source B", IsActive = true, CreatedBy = "Create B" },
                 // Add more plants as needed
             };
             return View(plants);

@@ -19,7 +19,7 @@ namespace RMS.Models
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         [ValidateNever]
-        public ProductMaster? Product { get; set; }
+        public Product? Product { get; set; }
         
         public int Count { get; set; }      
 

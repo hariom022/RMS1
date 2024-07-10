@@ -2,9 +2,9 @@
 
 namespace RMSWeb.Areas.User.Controllers
 {
-    public class ProductStockMasterController : Controller
+    public class ProductStockController : Controller
     {
-        public ProductStockMasterController()
+        public ProductStockController()
         {
              
         }

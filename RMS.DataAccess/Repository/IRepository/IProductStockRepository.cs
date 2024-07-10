@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace RMS.DataAccess.Repository.IRepository
 {
-    public interface IProductStockMasterRepository : IRepository<ProductStockMaster>
+    public interface IProductStockRepository : IRepository<ProductStock>
     {
-        void Update(ProductStockMaster obj);
+        void Update(ProductStock obj);
         void Save();
     }
 }

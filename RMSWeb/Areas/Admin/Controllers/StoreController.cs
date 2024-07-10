@@ -6,18 +6,18 @@ namespace RMSWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     //[Authorize(Roles = SD.Role_Admin)]
-    public class StoreMasterController : Controller
+    public class StoreController : Controller
     {
-        private readonly IStoreMasterRepository _plantRepo;
+        private readonly IStoreRepository _plantRepo;
 
-        public StoreMasterController(IStoreMasterRepository plantRepo)
+        public StoreController(IStoreRepository plantRepo)
         {
             _plantRepo = plantRepo;
         }
 
         public IActionResult Index()
         {
-            List<StoreMaster> storeList = _plantRepo.GetAll().ToList();
+            List<Store> storeList = _plantRepo.GetAll().ToList();
             return View(storeList);
         }
 

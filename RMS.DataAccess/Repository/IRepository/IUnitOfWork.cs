@@ -2,8 +2,8 @@
 {
     public interface IUnitOfWork
     {
-        IProductMasterRepository Product { get; }
-        IStoreMasterRepository Store { get; }
+        IProductRepository Product { get; }
+        IStoreRepository Store { get; }
         IPurchaseOrderCartRepository OrderCart { get; }
         IApplicationUserRepository ApplicationUser { get; }
         IPurchaseOrderHeaderRepository OrderHeader { get; }
@@ -11,7 +11,7 @@
         IQuotationRepository Quotation { get; }
         IGoodsIssueRepository GoodsIssue { get; }
         IInvoiceRepository Invoice { get; } 
-        IProductStockMasterRepository ProductStock { get; }
+        IProductStockRepository ProductStock { get; }
 
         void Save();
     }
