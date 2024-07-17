@@ -11,5 +11,12 @@ namespace RMS.DataAccess.Repository.IRepository
     {
         void Update(StoreStock obj);
         void Save();
+
+        StoreStock GetStoreStock(int storeId, int productId);
+        StoreStock GetStoreStock(int storeId, string productName);
+
+        dynamic GetStoreStockList(int storeId);
+
+
     }
 }

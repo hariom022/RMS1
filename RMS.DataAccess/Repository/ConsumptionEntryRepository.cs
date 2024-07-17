@@ -1,5 +1,6 @@
 ﻿using RMS.DataAccess.Data;
 using RMS.DataAccess.Repository.IRepository;
+using RMS.Models;
 
 namespace RMS.DataAccess.Repository
 {
@@ -20,5 +21,28 @@ namespace RMS.DataAccess.Repository
 
             throw new NotImplementedException();
         }
+
+        public bool Save(ConsumptionEntry consumptionEntry, StoreStock storeStock)
+        {
+            var trans = _db.Database.BeginTransaction();
+            try
+            {
+                storeStock.Quantity -= consumptionEntry.Quantity;
+
+                _db.StoreStocks.Update(storeStock);
+                _db.ConsumptionEntries.Add(consumptionEntry);
+                _db.SaveChanges();
+                trans.Commit();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                trans.Rollback();
+                return false;
+            }
+        }
+
+        
     }
 }
