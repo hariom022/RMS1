@@ -12,26 +12,26 @@
                     <table class="table datatable">
                     <thead>
                         <tr>
-                            <th scope="col">Store Name</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Data Source</th>
-                                <th scope="col">Manager</th>
-                            <th scope="col">Action</th>
+                                <th class="text-center" scope="col">Store Name</th>
+                                <th class="text-center" scope="col">Location</th>
+                                <th class="text-center" scope="col">Data Source</th>
+                                <th class="text-center" scope="col">Manager</th>
+                                <th class="text-center" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var plant in Model)
                         {
                             <tr>
-                                <td>@plant.StoreName</td>
-                                <td>@plant.Location</td>
-                                <td>@plant.DataSource</td>
-                                 <td>@plant.Manager</td>
-                                <td>
+                                    <td class="text-center">@plant.StoreName</td>
+                                    <td class="text-center">@plant.Location</td>
+                                    <td class="text-center">@plant.DataSource</td>
+                                    <td class="text-center">@plant.Manager</td>
+                                    <td class="text-center">
                                     <button style="border: none">
                                         <a href="#">Details</a>
                                     </button>
-                                </td>
+                                    </td>
                             </tr>
                         }
                     </tbody>

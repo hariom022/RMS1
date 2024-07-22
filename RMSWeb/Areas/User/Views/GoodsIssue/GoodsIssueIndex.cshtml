@@ -7,25 +7,25 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Product Overview</h5>
+                    <h5 class="card-title">Goods Issue Overview</h5>
 
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
-                            <tr class="text-center">
-                                <th>Quotation No</th>
-                                <th>OBD No</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                            <tr >
+                                <th class="text-center">Quotation No</th>
+                                <th class="text-center">OBD No</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var goodsIssue in Model)
                             {
-                                <tr class="text-center">
-                                    <td>@goodsIssue.QuotationNo</td>
-                                    <td>@goodsIssue.OBDNo</td>
-                                    <td>
+                                <tr >
+                                    <td class="text-center">@goodsIssue.QuotationNo</td>
+                                    <td class="text-center">@goodsIssue.OBDNo</td>
+                                    <td class="text-center">
                                         @switch (goodsIssue.Status)
                                         {
                                             case SD.StatusPending:
@@ -46,7 +46,7 @@
                                         }
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         <button style="border: none">
                                             <a asp-action="GoodsIssueDetails" asp-route-obdNo="@goodsIssue.OBDNo">Details</a>
                                         </button>

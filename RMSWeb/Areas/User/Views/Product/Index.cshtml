@@ -22,27 +22,27 @@
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
-                            <tr class="text-center">
-                                <th>Product Number</th>
-                                <th>Product Description</th>
-                                <th>Category</th>
-                                <th>Data Source</th>
-                                <th>IsActive</th>
-                                <th>Created By</th>
-                                <th>Action</th>
+                            <tr >
+                                <th class="text-center">Product Number</th>
+                                <th class="text-center" >Product Description</th>
+                                <th class="text-center">Category</th>
+                                <th class="text-center">Data Source</th>
+                                <th class="text-center">IsActive</th>
+                                <th class="text-center">Created By</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var product in Model)
                             {
-                                <tr class="text-center">
-                                    <td>@product.Number</td>
-                                    <td>@product.Description</td>
-                                    <td>@product.Category</td>
-                                    <td>@product.DataSource</td>
-                                    <td>@product.IsActive</td>
-                                    <td>@product.CreatedBy</td>
-                                    <td>
+                                <tr >
+                                    <td class="text-center">@product.Number</td>
+                                    <td class="text-center">@product.Description</td>
+                                    <td class="text-center">@product.Category</td>
+                                    <td class="text-center">@product.DataSource</td>
+                                    <td class="text-center">@product.IsActive</td>
+                                    <td class="text-center">@product.CreatedBy</td>
+                                    <td class="text-center">
                                         <button style="border: none">
                                             <a asp-action="Details" asp-route-productId="@product.ProductId">Details</a>
                                         </button>

@@ -10,22 +10,23 @@
                     <h5 class="card-title">Quotation Overview</h5>
 
                     <!-- Table with stripped rows -->
-                    <table class="table datatable">
+                    
+                    <table class="table datatable ">
                         <thead>
-                            <tr class="text-center">
-                                <th>Order Request No</th>
-                                <th>Quotation No</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                            <tr class="">
+                                <th class="text-center">Order Request No</th>
+                                <th class ="text-center">Quotation No</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var quotation in Model)
                             {
-                                <tr class="text-center">
-                                    <td>@quotation.RequestNo</td>
-                                    <td>@quotation.QuotationNo</td>
-                                    <td>
+                                <tr class="">
+                                    <td class="text-center">@quotation.RequestNo</td>
+                                    <td class="text-center"> @quotation.QuotationNo</td>
+                                    <td class="text-center">
                                         @switch (quotation.Status)
                                         {
                                             case "Pending":
@@ -44,7 +45,7 @@
                                     </td>
                                     @if (quotation.Status == @SD.StatusPending)
                                     {
-                                        <td>
+                                        <td class="text-center">
 
                                             <form method="post" asp-action="QuotationIndexPost" asp-controller="Quotation" class="d-inline">
                                                 <input type="hidden" name="id" value="@quotation.Id" />

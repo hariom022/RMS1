@@ -27,9 +27,6 @@ namespace RMS.DataAccess.Repository
         {
             _db.StoreStocks.Update(obj);
 
-
-
-
         }
     }
 }

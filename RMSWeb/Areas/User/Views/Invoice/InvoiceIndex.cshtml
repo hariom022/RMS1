@@ -11,22 +11,22 @@
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
-                            <tr class="text-center">
-                                <th>Invoice No</th>
-                                <th>OBD No</th>
-                                <th>Quotation No</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                            <tr >
+                                <th class="text-center">Invoice No</th>
+                                <th class="text-center">OBD No</th>
+                                <th class="text-center">Quotation No</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var invoice in Model)
                             {
-                                <tr class="text-center">
-                                    <td>@invoice.InvoiceNo</td>
-                                    <td>@invoice.OBDNo</td>
-                                    <td>@invoice.QuotationNo</td>
-                                    <td>
+                                <tr>
+                                    <td class="text-center">@invoice.InvoiceNo</td>
+                                    <td class="text-center">@invoice.OBDNo</td>
+                                    <td class="text-center">@invoice.QuotationNo</td>
+                                    <td class="text-center">
                                         @switch (invoice.Status)
                                         {
                                             case SD.StatusPending:
@@ -47,7 +47,7 @@
                                         }
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
                                         <button style="border: none">
                                             <a asp-action="InvoiceDetails" asp-route-invoiceNo="@invoice.InvoiceNo">Details</a>
                                         </button>
