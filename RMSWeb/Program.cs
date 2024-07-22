@@ -37,6 +37,8 @@ builder.Services.AddScoped<IPurchaseOrderCartRepository, PurchaseOrderCartReposi
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IStoreStockRepository, StoreStockRepository>();
+builder.Services.AddScoped<IConsumptionEntryRepository, ConsumptionEntryRepository>();
 
 builder.Services.AddHttpClient<ISapService, SapService>();
 builder.Services.AddScoped<ISapService, SapService>();
