@@ -23,26 +23,22 @@
                     <table class="table datatable">
                         <thead>
                             <tr >
-                                <th class="text-center">Product Number</th>
-                                <th class="text-center" >Product Description</th>
-                                <th class="text-center">Category</th>
-                                <th class="text-center">Data Source</th>
-                                <th class="text-center">IsActive</th>
-                                <th class="text-center">Created By</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-start">Product Number</th>
+                                <th class="text-start">NPC Code</th>
+                                <th class="text-start">Product Description</th>
+                                <th class="text-start">Group Description</th>
+                                <th class="text-start">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var product in Model)
                             {
                                 <tr >
-                                    <td class="text-center">@product.Number</td>
-                                    <td class="text-center">@product.Description</td>
-                                    <td class="text-center">@product.Category</td>
-                                    <td class="text-center">@product.DataSource</td>
-                                    <td class="text-center">@product.IsActive</td>
-                                    <td class="text-center">@product.CreatedBy</td>
-                                    <td class="text-center">
+                                    <td class="text-start">@product.Number</td>
+                                    <td class="text-start">@product.NPC_Code</td>
+                                    <td class="text-start">@product.Description</td>
+                                    <td class="text-start">@product.GroupDesc</td>
+                                    <td class="text-start">
                                         <button style="border: none">
                                             <a asp-action="Details" asp-route-productId="@product.ProductId">Details</a>
                                         </button>

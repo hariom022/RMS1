@@ -13,19 +13,19 @@
                     <table class="table datatable">
                         <thead>
                             <tr >
-                                <th class="text-center">Quotation No</th>
-                                <th class="text-center">OBD No</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-start">Quotation No</th>
+                                <th class="text-start">OBD No</th>
+                                <th class="text-start">Status</th>
+                                <th class="text-start">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var goodsIssue in Model)
                             {
                                 <tr >
-                                    <td class="text-center">@goodsIssue.QuotationNo</td>
-                                    <td class="text-center">@goodsIssue.OBDNo</td>
-                                    <td class="text-center">
+                                    <td class="text-start">@goodsIssue.QuotationNo</td>
+                                    <td class="text-start">@goodsIssue.OBDNo</td>
+                                    <td class="text-start">
                                         @switch (goodsIssue.Status)
                                         {
                                             case SD.StatusPending:
@@ -38,7 +38,7 @@
                                                 <span class="badge bg-success">@goodsIssue.Status</span>
                                                 break;
                                             case SD.StatusInProcess:
-                                                <span class="badge bg-primary">@goodsIssue.Status</span>
+                                                <span class="badge bg-info">@goodsIssue.Status</span>
                                                 break;
                                             default:
                                                 @goodsIssue.Status
@@ -46,7 +46,7 @@
                                         }
                                     </td>
 
-                                    <td class="text-center">
+                                    <td class="text-start">
                                         <button style="border: none">
                                             <a asp-action="GoodsIssueDetails" asp-route-obdNo="@goodsIssue.OBDNo">Details</a>
                                         </button>

@@ -4,7 +4,7 @@
     var firstInvoice = Model.FirstOrDefault();
 }
 
-<
+
 <div class="container">
     <div class="card shadow border-0">
 
@@ -16,7 +16,7 @@
                     </h5>
                 </div>
                 <div class="col-6 text-end">
-                    <a asp-action="InvoiceIndex" class="btn btn-outline-danger btn-sm">Back to Index</a>
+                    <a asp-action="InvoiceIndex" class="btn btn-outline-none btn-sm bg-primary text-light">Back to Index</a>
                 </div>
             </div>
         </div>
@@ -101,17 +101,22 @@
                 <div class="col-12 col-md-3">
                 <button type="button" class="btn btn-danger form-control" onclick="setGoodsIssueStatus('@firstGoodsIssue?.OBDNo', '@SD.StatusCancelled')">Reject</button>
                 </div> *@
+                @if(firstInvoice.Status == "Pending")
+                {
+                    <div class="d-flex justify-content-center">
+                        <form method="post" asp-action="InvoicePost" asp-controller="Invoice" class="d-inline">
+                            <input type="hidden" name="invoiceNo" value="@firstInvoice?.InvoiceNo" />
+                            <input type="hidden" name="status" value="@SD.StatusInProcess" />
+                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                        </form>
+                        <form method="post" asp-action="InvoicePost" asp-controller="Invoice" class="d-inline">
+                            <input type="hidden" name="invoiceNo" value="@firstInvoice?.InvoiceNo" />
+                            <input type="hidden" name="status" value="@SD.StatusCancelled" />
+                            <button type="submit" class="btn btn-danger btn-sm ms-1">Reject</button>
+                        </form>
+                    </div>
+                }
 
-                <form method="post" asp-action="InvoicePost" asp-controller="Invoice" class="d-inline">
-                    <input type="hidden" name="invoiceNo" value="@firstInvoice?.InvoiceNo" />
-                    <input type="hidden" name="status" value="@SD.StatusInProcess" />
-                    <button type="submit" class="btn btn-success btn-sm">Approve</button>
-                </form>
-                <form method="post" asp-action="InvoicePost" asp-controller="Invoice" class="d-inline">
-                    <input type="hidden" name="invoiceNo" value="@firstInvoice?.InvoiceNo" />
-                    <input type="hidden" name="status" value="@SD.StatusCancelled" />
-                    <button type="submit" class="btn btn-danger btn-sm">Reject</button>
-                </form>
             </div>
         </div>
     </div>

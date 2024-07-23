@@ -12,21 +12,21 @@
                     <table class="table datatable">
                         <thead>
                             <tr >
-                                <th class="text-center">Invoice No</th>
-                                <th class="text-center">OBD No</th>
-                                <th class="text-center">Quotation No</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-start">Invoice No</th>
+                                <th class="text-start">OBD No</th>
+                                <th class="text-start">Quotation No</th>
+                                <th class="text-start">Status</th>
+                                <th class="text-start">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var invoice in Model)
                             {
                                 <tr>
-                                    <td class="text-center">@invoice.InvoiceNo</td>
-                                    <td class="text-center">@invoice.OBDNo</td>
-                                    <td class="text-center">@invoice.QuotationNo</td>
-                                    <td class="text-center">
+                                    <td class="text-start">@invoice.InvoiceNo</td>
+                                    <td class="text-start">@invoice.OBDNo</td>
+                                    <td class="text-start">@invoice.QuotationNo</td>
+                                    <td class="text-start">
                                         @switch (invoice.Status)
                                         {
                                             case SD.StatusPending:
@@ -39,7 +39,7 @@
                                                 <span class="badge bg-success">@invoice.Status</span>
                                                 break;
                                             case SD.StatusInProcess:
-                                                <span class="badge bg-primary">@invoice.Status</span>
+                                                <span class="badge bg-info">@invoice.Status</span>
                                                 break;
                                             default:
                                                 @invoice.Status
@@ -47,7 +47,7 @@
                                         }
                                     </td>
 
-                                    <td class="text-center">
+                                    <td class="text-start">
                                         <button style="border: none">
                                             <a asp-action="InvoiceDetails" asp-route-invoiceNo="@invoice.InvoiceNo">Details</a>
                                         </button>

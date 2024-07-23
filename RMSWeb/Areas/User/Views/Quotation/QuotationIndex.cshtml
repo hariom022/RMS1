@@ -14,29 +14,32 @@
                     <table class="table datatable ">
                         <thead>
                             <tr class="">
-                                <th class="text-center">Order Request No</th>
-                                <th class ="text-center">Quotation No</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-start">Order Request No</th>
+                                <th class="text-start">Quotation No</th>
+                                <th class="text-start">Status</th>
+                                <th class="text-start">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var quotation in Model)
                             {
                                 <tr class="">
-                                    <td class="text-center">@quotation.RequestNo</td>
-                                    <td class="text-center"> @quotation.QuotationNo</td>
-                                    <td class="text-center">
+                                    <td class="text-start">@quotation.RequestNo</td>
+                                    <td class="text-start"> @quotation.QuotationNo</td>
+                                    <td class="text-start">
                                         @switch (quotation.Status)
                                         {
                                             case "Pending":
-                                                <span class="badge bg-secondary">@quotation.Status</span>
+                                                <span class="badge bg-warning">@quotation.Status</span>
                                                 break;
                                             case "Cancelled":
                                                 <span class="badge bg-danger">@quotation.Status</span>
                                                 break;
                                             case "Approved":
                                                 <span class="badge bg-success">@quotation.Status</span>
+                                                break;
+                                            case "Processing":
+                                                <span class="badge bg-info">@quotation.Status</span>
                                                 break;
                                             default:
                                                 @quotation.Status
@@ -45,7 +48,7 @@
                                     </td>
                                     @if (quotation.Status == @SD.StatusPending)
                                     {
-                                        <td class="text-center">
+                                        <td class="text-start">
 
                                             <form method="post" asp-action="QuotationIndexPost" asp-controller="Quotation" class="d-inline">
                                                 <input type="hidden" name="id" value="@quotation.Id" />

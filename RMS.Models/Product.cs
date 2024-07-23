@@ -11,24 +11,24 @@ namespace RMS.Models
         [Key]
         public int ProductId { get; set; }
         [Required]
+        public string NPC_Code { get; set; }
+        [Required]  
         public string? Number { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
+        public string ProductType { get; set; }
+        [Required]
+        public string TypeDescription { get; set; }
+        [Required]
         public string? Category { get; set; }
-
+        [Required]
+        public int GroupCode { get; set; }
+        [Required]
+        public string GroupDesc { get; set; }
+        [Required]
+        public string UoM { get; set; }
        
-        public string? DataSource { get; set; }
-    
-        public bool? IsActive { get; set; }
-      
-        public string? CreatedBy { get; set; }
-        public DateTime? CreatedOn { get; set; }  
-        public string? ModifiedBy { get; set; }
-        public DateTime? ModifiedOn { get; set; }  
-        public string? DeletedBy { get; set; }
-        public DateTime? DeletedOn { get; set; } 
-
         //Nevigation Property
         public ICollection<StoreStock> StoreStocks { get; set; }
 

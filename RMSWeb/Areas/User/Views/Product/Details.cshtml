@@ -4,7 +4,7 @@
     <div class="card-body">
         <h5 class="card-title">@Model.Product.Description</h5>
 
-        <!-- Vertical Form -->
+      
         <form class="row g-3" method="post">
             <input hidden asp-for="ProductId" />
             <div class="col-6">
@@ -21,19 +21,27 @@
             </div>
             <div class="col-6">
                 <label for="DataSource" class="form-label">Data Source</label>
-                <input disabled type="text" class="form-control" id="DataSource" placeholder="@Model.Product.DataSource">
+                <input disabled type="text" class="form-control" id="DataSource" placeholder="@Model.Product.NPC_Code">
             </div>
             <div class="col-6">
                 <label for="IsActive" class="form-label">IsActive</label>
-                <input disabled type="text" class="form-control" id="IsActive" placeholder="@Model.Product.IsActive">
+                <input disabled type="text" class="form-control" id="IsActive" placeholder="@Model.Product.GroupCode">
             </div>
             <div class="col-6">
                 <label for="CreatedBy" class="form-label">Created By</label>
-                <input disabled type="text" class="form-control" id="CreatedBy" placeholder="@Model.Product.CreatedBy">
+                <input disabled type="text" class="form-control" id="CreatedBy" placeholder="@Model.Product.GroupDesc">
             </div>
             <div class="col-6">
                 <label for="CreatedOn" class="form-label">Created On</label>
-                <input disabled type="text" class="form-control" id="CreatedOn" placeholder="@Model.Product.CreatedOn">
+                <input disabled type="text" class="form-control" id="CreatedOn" placeholder="@Model.Product.ProductType">
+            </div>
+            <div class="col-6">
+                <label for="CreatedOn" class="form-label">Created On</label>
+                <input disabled type="text" class="form-control" id="CreatedOn" placeholder="@Model.Product.TypeDescription">
+            </div>
+            <div class="col-6">
+                <label for="CreatedOn" class="form-label">Created On</label>
+                <input disabled type="text" class="form-control" id="CreatedOn" placeholder="@Model.Product.UoM">
             </div>
             <div class="col-6">
                 <label for="quantity" class="form-label">Count</label>
@@ -41,9 +49,8 @@
             </div>
             <div class="text-center " style="padding-top:10px;">
                 <button type="submit" class="btn btn-primary">ADD TO ORDER CART</button>
-                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+               
             </div>
-        </form><!-- Vertical Form -->
-
+        </form>
     </div>
 </div>

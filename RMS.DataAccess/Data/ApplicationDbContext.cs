@@ -19,11 +19,11 @@ namespace RMS.DataAccess.Data
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<GoodsIssue> GoodsIssues { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
-        public DbSet<Product> Products { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<ConsumptionEntry> ConsumptionEntries { get; set; }
         public DbSet<StoreStock> StoreStocks {  get; set; }
        public DbSet<ProductStock> ProductStocks { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
