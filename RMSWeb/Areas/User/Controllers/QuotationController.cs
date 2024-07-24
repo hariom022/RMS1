@@ -31,6 +31,7 @@ namespace RMSWeb.Areas.User.Controllers
             try
             {
                 List<Quotation> quotationList = _unitOfWork.Quotation.GetAll().ToList();
+                
                 return View(quotationList);
             }
             catch (Exception ex)
@@ -42,6 +43,15 @@ namespace RMSWeb.Areas.User.Controllers
                 return Content("An error occurred while getting the product list. Please try again later.");
             }
 
+        }
+        public IActionResult QuotationDetails(string requestNo)
+        {
+            var quotation= _unitOfWork.Quotation.GetAll(q=>q.RequestNo == requestNo).ToList();
+            if(quotation == null)
+            {
+                return NotFound();
+            }
+            return View(quotation);
         }
 
         [HttpPost]

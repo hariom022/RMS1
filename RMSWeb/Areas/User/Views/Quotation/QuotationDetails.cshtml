@@ -1,7 +1,8 @@
-﻿@model IEnumerable<GoodsIssue>
+﻿
+@model IEnumerable<Quotation>
 
 @{
-    var firstGoodsIssue = Model.FirstOrDefault();
+    var firstQuotation = Model.FirstOrDefault();
 }
 
 
@@ -12,11 +13,11 @@
             <div class="row px-4">
                 <div class="col-6">
                     <h5 class="pt-2 text-white">
-                        Goods Receipt Summary
+                        Quotation Details
                     </h5>
                 </div>
                 <div class="col-6 text-end">
-                    <a asp-action="GoodsIssueIndex" class="btn btn-outline-none btn-sm bg-primary text-light" >Back to Index</a>
+                    <a asp-action="QuotationIndex" class="btn btn-outline-none btn-sm bg-primary text-light">Back to Index</a>
                 </div>
             </div>
         </div>
@@ -26,8 +27,18 @@
                     <div class="col-12 col-lg-6 pb-4">
                         <div class="row">
                             <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="text-info">Goods Receipt Details:</span>
+                                <span class="text-info">Quotation Details:</span>
                             </h4>
+                        </div>
+
+                        <div class="row my-1">
+                            <div class="col-3">
+                                <label>Request No</label>
+                            </div>
+                            <div class="col-9">
+                                <input value="@firstQuotation.RequestNo" class="form-control" readonly />
+                                <span class="text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="row my-1">
@@ -35,27 +46,17 @@
                                 <label>Quotation No</label>
                             </div>
                             <div class="col-9">
-                                <input value="@firstGoodsIssue.QuotationNo" class="form-control" readonly />
+                                <input value="@firstQuotation.QuotationNo" class="form-control" readonly />
                                 <span class="text-danger"></span>
                             </div>
                         </div>
 
                         <div class="row my-1">
                             <div class="col-3">
-                                <label>OBD No</label>
+                                <label>Created Date</label>
                             </div>
                             <div class="col-9">
-                                <input value="@firstGoodsIssue.OBDNo" class="form-control" readonly />
-                                <span class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="row my-1">
-                            <div class="col-3">
-                                <label>Delivered Date</label>
-                            </div>
-                            <div class="col-9">
-                                <input value="@firstGoodsIssue.DeliveredDate" class="form-control" readonly />
+                                <input value="@firstQuotation.CreatedDate" class="form-control" readonly />
                                 <span class="text-danger"></span>
                             </div>
                         </div>
@@ -70,12 +71,15 @@
 
                             @foreach (var details in Model)
                             {
-                                <li class="list-group-item d-flex justify-content-between">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h6 class="my-0">@details.ProductNumber</h6>
+                                        <h6 class="my-0">Product Number : 1000010</h6>
+                                        <small class="text-muted">Count: 10</small>
                                         @* <small class="text-muted">Number: @details.Quantity</small> *@
                                     </div>
-                                    <span class="text-muted">Quantity: @details.Quantity </span>
+                                    
+                                    <span class="text-muted">Price: @details.Price </span> 
+                                   
                                 </li>
                             }
                         </ul>
@@ -92,22 +96,22 @@
                 <div class="col-12 col-md-3">
                 <button type="button" class="btn btn-danger form-control" onclick="setGoodsIssueStatus('@firstGoodsIssue?.OBDNo', '@SD.StatusCancelled')">Reject</button>
                 </div> *@
-                @if(firstGoodsIssue.Status == "Pending")
+                @if (firstQuotation.Status == "Pending")
                 {
                     <div class="d-flex justify-content-center">
-                        <form method="post" asp-action="GoodsIssuePost" asp-controller="GoodsIssue" class="d-inline">
-                            <input type="hidden" name="obdNo" value="@firstGoodsIssue?.OBDNo" />
+                        <form method="post" asp-action="QuotationIndexPost" asp-controller="Quotation" class="d-inline">
+                            <input type="hidden" name="id" value="@firstQuotation?.Id" />
                             <input type="hidden" name="status" value="@SD.StatusInProcess" />
                             <button type="submit" class="btn btn-success btn-sm">Approve</button>
                         </form>
-                        <form method="post" asp-action="GoodsIssuePost" asp-controller="GoodsIssue" class="d-inline">
-                            <input type="hidden" name="obdNo" value="@firstGoodsIssue?.OBDNo" />
+                        <form method="post" asp-action="QuotationIndexPost" asp-controller="Quotation" class="d-inline">
+                            <input type="hidden" name="id" value="@firstQuotation?.Id" />
                             <input type="hidden" name="status" value="@SD.StatusCancelled" />
                             <button type="submit" class="btn btn-danger btn-sm ms-1">Reject</button>
                         </form>
                     </div>
                 }
-               
+
 
             </div>
         </div>

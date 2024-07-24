@@ -20,3 +20,28 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.more-info-btn {
+    /*background-color: rgba(0, 123, 255, 0.2) !important;*/
+    width: 100% !important;
+    /*background-color: black !important;*/
+    margin-top: 10px;
+    outline: none !important;
+    border: none !important;
+    padding: 8px;
+}
+.more-info-btn a{
+   
+    outline: none !important;
+    border: none !important;
+}
+
+
+.select2-container .select2-selection--single {
+    height: 38px !important;
+}
+
+.select2-selection--single .select2-selection__rendered {
+    line-height: 36px !important;
+}

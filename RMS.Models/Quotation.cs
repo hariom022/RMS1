@@ -14,6 +14,8 @@ namespace RMS.Models
         public string QuotationNo { get; set; }
         [Required]
         public string RequestNo { get; set; }
+        [Required]
+        public double Price { get; set; }
 
         public int PurchaseOrderHeaderId { get; set; } // Foreign key
         [ForeignKey("PurchaseOrderHeaderId")]
