@@ -1,8 +1,6 @@
 ﻿@model RMS.Models.ViewModels.PurchaseOrderCartVM
 
 
-
-
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -13,41 +11,59 @@
 
         <form method="post" asp-action="AddToCart" asp-controller="Cart">
             <div class="row d-flex justify-content-around">
-                <div class="col-md-4">
+
+                <div class="col-md-3">
                     <div class="form-group">
-                        @* <label for="productSelect">Select Product</label> *@
-                        <select asp-for="SelectedProductId" class="form-select" id="productSelect" style="height:100%;">
-                            <option value="">Select product</option>
+                        <select asp-for="SelectedProductId" class="form-select" id="npcSelect" style="height:100%;">
+                            <option value="">Select NPC</option>
                             @foreach (var product in Model.Products)
                             {
-                                <option value="@product.ProductId">@product.Description</option>
+                                <option value="@product.ProductId" data-description="@product.Description">@product.NPC_Code</option>
                             }
                         </select>
                         <script>
                             $(document).ready(function () {
-                                $('#productSelect').select2();
+                                $('#npcSelect').select2();
                             });
                         </script>
                     </div>
                 </div>
-                
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
-                        @* <label for="quantity">Count</label> *@
+                        <select asp-for="SelectedProductId" class="form-select" id="descriptionSelect" style="height:100%;">
+                            <option value="">Select Product</option>
+                            @foreach (var product in Model.Products)
+                            {
+                                <option value="@product.ProductId" data-npc="@product.NPC_Code">@product.Description</option>
+                            }
+                        </select>
+                        <script>
+                            $(document).ready(function () {
+                                $('#descriptionSelect').select2();
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
                         <input asp-for="QuantityToAdd" class="form-control" id="quantity" type="number" min="1" placeholder="Add quantity to place the order">
                     </div>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-md-3">
                     <button class="btn btn-primary w-50" type="submit">ADD</button>
                 </div>
             </div>
         </form>
-        <hr class="mb-3 mt-5"/>
-        <!-- Table with hoverable rows -->
+
+        <hr class="mb-3 mt-5" />
+
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">NPC Code</th>
                     <th scope="col">Name</th>
                     <th scope="col">Count</th>
                     <th scope="col">Update</th>
@@ -58,6 +74,7 @@
                 @foreach (var item in Model.PurchaseOrderCartList)
                 {
                     <tr>
+                        <td>@item.Product.NPC_Code</td>
                         <td>@item.Product.Description</td>
                         <td>@item.Count</td>
                         <td>
@@ -84,3 +101,23 @@
         </a>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#npcSelect').select2();
+        $('#descriptionSelect').select2();
+
+        $('#npcSelect').on('change', function () {
+            var selectedOption = $(this).find('option:selected');
+            var productId = selectedOption.val();
+            $('#descriptionSelect').val(productId).trigger('change');
+        });
+
+        $('#descriptionSelect').on('change', function () {
+            var selectedOption = $(this).find('option:selected');
+            var productId = selectedOption.val();
+            $('#npcSelect').val(productId).trigger('change');
+        });
+    });
+</script>
+
