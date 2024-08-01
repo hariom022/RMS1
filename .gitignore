@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /RMSWeb/appsettings.json
 /RMSWeb/wwwroot/uploads
+/RMSWeb/appsettings.Development.json
+/RMSWeb/wwwroot/sampleFile/Sample.xlsx
